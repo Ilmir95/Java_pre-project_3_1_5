@@ -96,22 +96,12 @@ public class User implements UserDetails {
     }
 
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String rolesToString() {
-        StringBuilder resultRole = new StringBuilder();
-        getRoles().forEach(r -> resultRole.append(r.getName().substring(5)).append(" "));
-        return resultRole.toString();
     }
 
     @Override
