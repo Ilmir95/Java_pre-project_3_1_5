@@ -28,39 +28,24 @@ public class AdminRestController {
     @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsersForm() {
         List<User> userList = userService.getAllUsers();
-        if (userList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
     @PostMapping("/users")
     public ResponseEntity<User> create(@RequestBody User user) {
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
         userService.createNewUser(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @DeleteMapping("/users/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
-        if (id == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/users/{id}")
     public ResponseEntity<User> getShowForm(@PathVariable("id") Integer id) {
-        if (id == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
         User user = userService.getUser(id);
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
@@ -72,9 +57,6 @@ public class AdminRestController {
 
     @PostMapping("/users/{id}")
     public ResponseEntity<User> update(@RequestBody User user) {
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
         userService.updateUser(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

@@ -8,7 +8,7 @@ async function thisUser() {
         .then(data => {
 
             $('#headerUsername').append(data.email);
-            const roles = data.roles.map(role => role.role.substring(5).concat(" ")).toString().replaceAll(`,`, ``);
+            let roles = data.roles.map(role => " " + role.name.substring(5));
             $('#headerRoles').append(roles);
 
             let user = `$(
