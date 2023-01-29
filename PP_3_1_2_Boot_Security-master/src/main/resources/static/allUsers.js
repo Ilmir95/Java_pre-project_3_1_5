@@ -12,11 +12,10 @@ async function allUsers() {
                 let tableWithUsers = `$(
                         <tr>
                             <td>${user.id}</td>
-                            <td>${user.name}</td>
+                            <td>${user.username}</td>
                             <td>${user.surname}</td>                                               
                             <td>${user.age}</td>
                             <td>${user.email}</td>
-                            <td>${user.username}</td>
                             <td>${user.roles.map(role => " " + role.name.substring(5))}</td>
                             <td>
                                 <button type="button" class="btn btn-info" data-toggle="modal" id="buttonEdit"

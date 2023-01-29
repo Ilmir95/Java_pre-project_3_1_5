@@ -14,11 +14,10 @@ async function thisUser() {
             let user = `$(
             <tr>
                 <td>${data.id}</td>
-                <td>${data.name}</td>
+                <td>${data.username}</td>
                 <td>${data.surname}</td>
                 <td>${data.age}</td>
                 <td>${data.email}</td>
-                <td>${data.username}</td>
                 <td>${roles}</td>)`;
             $('#userPanelBody').append(user);
         })

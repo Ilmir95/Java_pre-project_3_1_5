@@ -21,11 +21,8 @@ async function newUser() {
     function addNewUser(e) {
         e.preventDefault();
         let newUserRoles = [];
-        for (let i = 0; i < form.roles.options.length; i++) {
-            if (form.roles.options[i].selected) newUserRoles.push({
-                id: form.roles.options[i].value,
-                name: "ROLE_" + form.roles.options[i].text
-            })
+        for (let i = 0; i < newUserRoles.length; i++) {
+            newUserRoles[i] = newUserRoles[i].value;
         }
         fetch("http://localhost:8080/api/users", {
             method: 'POST',
@@ -34,11 +31,10 @@ async function newUser() {
             },
             body: JSON.stringify({
                 id: 2e9,
-                name: form.name.value,
+                username: form.username.value,
                 surname: form.surname.value,
                 age: form.age.value,
                 email: form.email.value,
-                username: form.username.value,
                 password: form.password.value,
                 roles: newUserRoles
             })

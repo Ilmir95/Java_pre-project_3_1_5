@@ -35,9 +35,9 @@ public class DefUser implements CommandLineRunner {
         Set<Role> mentorRole = new HashSet<>();
         mentorRole.add(roleMentror);
         mentorRole.add(roleUser);
-        User ilmir = new User("Ilmir", "Khafizov", 27, "ilmir131313@yandex.ru", "user", passwordEncoder.passwordEncoder().encode("123456"), userRole); // password 123456
-        User admin = new User("Admin", "Kata", 30, "mentor@mail.ru", "admin", passwordEncoder.passwordEncoder().encode("123456"), mentorRole);
-        User mentor = new User("Mentor", "Kata", 30, "mentor@mail.ru", "mentor", passwordEncoder.passwordEncoder().encode("123456"), mentorRole); // password 123456
+        User ilmir = new User("user", "Khafizov", 27, "ilmir131313@yandex.ru",  passwordEncoder.passwordEncoder().encode("123456"), userRole); // password 123456
+        User admin = new User("admin", "Kata", 30, "mentor@mail.ru", passwordEncoder.passwordEncoder().encode("123456"), mentorRole);
+        User mentor = new User("mentor", "Kata", 30, "mentor@mail.ru", passwordEncoder.passwordEncoder().encode("123456"), mentorRole); // password 123456
         userRepository.save(ilmir);
         userRepository.save(admin);
         userRepository.save(mentor);

@@ -28,39 +28,38 @@ public class AdminRestController {
     @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsersForm() {
         List<User> userList = userService.getAllUsers();
-        return new ResponseEntity<>(userList, HttpStatus.OK);
+        return ResponseEntity.ok(userList);
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> create(@RequestBody User user) {
+    public ResponseEntity<HttpStatus> create(@RequestBody User user) {
         userService.createNewUser(user);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @DeleteMapping("/users/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") Integer id) {
         userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/users/{id}")
-    public ResponseEntity<User> getShowForm(@PathVariable("id") Integer id) {
+    @GetMapping("/user/{id}")
+    public ResponseEntity<User> getShowForm(@PathVariable("id") int id) {
         User user = userService.getUser(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/user")
     public ResponseEntity<User> getUserByUsername(Principal principal) {
         User user = userService.findUserByUsername(principal.getName());
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping("/users/{id}")
-    public ResponseEntity<User> update(@RequestBody User user) {
+    public ResponseEntity<HttpStatus> update(@RequestBody User user) {
         userService.updateUser(user);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
-
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/roles")
     public ResponseEntity<List<Role>> getAllRoles() {
@@ -69,7 +68,9 @@ public class AdminRestController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/roles/{id}")
-    public ResponseEntity<Role> getRoleById(@PathVariable("id") int id) {
+    ResponseEntity<Role> getRoleById(@PathVariable("id") int id) {
         return new ResponseEntity<>(roleService.findById(id), HttpStatus.OK);
     }
+
+
 }

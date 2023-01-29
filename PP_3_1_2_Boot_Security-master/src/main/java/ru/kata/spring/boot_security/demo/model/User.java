@@ -18,17 +18,14 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "username")
+    private String username;
     @Column(name = "surname")
     private String surname;
     @Column(name = "age")
     private int age;
     @Column(name = "email")
     private String email;
-    @Column(name = "username")
-    private String username;
-
     @Column(name = "password")
     private String password;
     @ManyToMany(fetch = FetchType.LAZY)
@@ -41,12 +38,11 @@ public class User implements UserDetails {
     }
 
 
-    public User(String name, String surname, int age, String email, String username, String password, Set<Role> roles) {
-        this.name = name;
+    public User(String username, String surname, int age, String email, String password, Set<Role> roles) {
+        this.username = username;
         this.surname = surname;
         this.age = age;
         this.email = email;
-        this.username = username;
         this.password = password;
         this.roles = roles;
     }
@@ -57,14 +53,6 @@ public class User implements UserDetails {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getSurname() {
@@ -143,7 +131,6 @@ public class User implements UserDetails {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +

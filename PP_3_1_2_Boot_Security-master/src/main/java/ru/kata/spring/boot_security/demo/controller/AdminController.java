@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-    @Secured("ADMIN")
+
+    @Secured("ROLE_ADMIN")
     @GetMapping
     public String findAll() {
         return "admin/admin";

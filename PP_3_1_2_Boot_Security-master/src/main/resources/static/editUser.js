@@ -8,25 +8,21 @@ function editUser() {
     editForm.addEventListener("submit", ev => {
         ev.preventDefault();
         let editUserRoles = [];
-        for (let i = 0; i < editForm.roles.options.length; i++) {
-            if (editForm.roles.options[i].selected) editUserRoles.push({
-                id: editForm.roles.options[i].value,
-                name: "ROLE_" + editForm.roles.options[i].text
-            })
+        for (let i = 0; i < editUserRoles.length; i++) {
+            editUserRoles[i] = editUserRoles[i].value;
         }
 
         fetch("http://localhost:8080/api/users/" + editForm.id.value, {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 id: editForm.id.value,
-                name: editForm.name.value,
+                username: editForm.username.value,
                 surname: editForm.surname.value,
                 age: editForm.age.value,
                 email: editForm.email.value,
-                username: editForm.username.value,
                 password: editForm.password.value,
                 roles: editUserRoles
             })
